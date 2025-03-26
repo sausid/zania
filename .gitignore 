@@ -1,0 +1,26 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# Django-related
+*.sqlite3
+db.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Static and media files
+staticfiles/
+media/
+
+# Environment variables (Secrets)
+.env
+
+# Ignore Docker containers
+*.pid
