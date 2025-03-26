@@ -30,7 +30,7 @@ cp env.example .env
 make migrate
 
 ```
-
+Also set a secret key in .env. It is a mandatory step.
 ---
 
 ## 🏗️ 2️⃣ Build & Run the Application
