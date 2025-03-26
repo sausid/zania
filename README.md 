@@ -23,10 +23,12 @@ cd zania
 
 ---
 
-## 📌 1️⃣ Prerequisites
-Setup environment:
+## 📌 1️⃣ Setup
+Setup environment and local DB:
 - ```bash
 cp env.example .env
+make migrate
+
 ```
 
 ---
