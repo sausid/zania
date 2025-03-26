@@ -1,0 +1,128 @@
+# 🛒 Django E-Commerce API
+
+This is a **Dockerized RESTful API** for an **E-Commerce platform** built using Django and Django REST Framework (DRF). It allows users to:
+- View available products
+- Add new products
+- Place orders with stock validation
+
+## 🚀 Features
+✅ RESTful API with Django & DRF (Django Rest Framework)
+✅ SQLite as the database
+✅ Dockerized for easy deployment
+✅ Automated migrations
+✅ API testing using `cURL` and unit tests
+
+---
+
+## 📌 0️⃣ Clone
+Clone the repo from github and setup environment:
+- ```bash
+git clone git@github.com:sausid/zania.git
+cd zania
+cp env.example .env
+```
+
+---
+
+## 📌 1️⃣ Prerequisites
+Ensure you have installed:
+- **Docker & Docker Compose** → [Install Guide](https://docs.docker.com/get-docker/)
+
+---
+
+## 🏗️ 2️⃣ Build & Run the Application
+### **Option 1: Using `Makefile` (Recommended)**
+```bash
+make rundocker
+```
+### **Option 2: Manual Docker Commands**
+```bash
+docker-compose down  # Stop any running containers
+docker-compose build  # Build the Docker images
+docker-compose up -d  # Start containers in detached mode
+docker exec -it ecommerce sh -c "python manage.py migrate"  # Apply migrations
+docker exec -it ecommerce sh -c "python manage.py collectstatic --noinput"  # Collect static files
+```
+After this, the API will be available at:
+```
+http://localhost:8000/api/
+```
+
+---
+
+## 🔍 3️⃣ Testing the API with `cURL`
+
+### **Get All Products**
+```bash
+curl -X GET http://localhost:8000/api/products/
+```
+
+### **Add a New Product**
+```bash
+curl -X POST http://localhost:8000/api/products/ \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Laptop", "description": "A gaming laptop", "price": 1200, "stock": 5}'
+```
+
+### **Place an Order**
+```bash
+curl -X POST http://localhost:8000/api/orders/ \
+     -H "Content-Type: application/json" \
+     -d '{"items": [{"product": 1, "quantity": 2}]}'
+```
+
+### **Get All Orders**
+```bash
+curl -X GET http://localhost:8000/api/orders/
+```
+
+---
+
+## 🔄 4️⃣ Stopping the Application
+To stop running containers:
+```bash
+make down  # OR
+
+docker-compose down
+```
+
+---
+
+## 🛠 5️⃣ Running Tests
+To run automated Django tests inside the Docker container:
+```bash
+docker exec -it ecommerce sh -c "python manage.py test"
+```
+
+---
+
+## 📂 Project Structure
+```
+ecommerce_api/
+│── ecommerce/          # Django project settings
+│── products/           # Product app (Model, Serializer, Views, URLs)
+│── orders/             # Order app (Model, Serializer, Views, URLs)
+│── docker-compose.yml  # Docker configuration
+│── Dockerfile          # Docker setup
+│── Makefile            # Shortcut commands
+│── requirements.txt    # Python dependencies
+│── .env                # Environment variables (ignored in Git)
+│── README.md           # Documentation (this file)
+```
+
+---
+
+## 📝 6️⃣ Environment Variables (`.env`)
+Ensure you have a `.env` file with:
+```
+SECRET_KEY=super-secret-key
+DEBUG=True
+ALLOWED_HOSTS=*
+```
+
+---
+
+## 🚀 7️⃣ Deployment Notes
+- **Production Mode**: Set `DEBUG=False` and configure `ALLOWED_HOSTS`
+
+
