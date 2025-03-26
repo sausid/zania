@@ -15,18 +15,19 @@ This is a **Dockerized RESTful API** for an **E-Commerce platform** built using 
 ---
 
 ## 📌 0️⃣ Clone
-Clone the repo from github and setup environment:
+Clone the repo from github:
 - ```bash
 git clone git@github.com:sausid/zania.git
 cd zania
-cp env.example .env
 ```
 
 ---
 
 ## 📌 1️⃣ Prerequisites
-Ensure you have installed:
-- **Docker & Docker Compose** → [Install Guide](https://docs.docker.com/get-docker/)
+Setup environment:
+- ```bash
+cp env.example .env
+```
 
 ---
 
@@ -98,12 +99,12 @@ docker exec -it ecommerce sh -c "python manage.py test"
 
 ## 📂 Project Structure
 ```
-ecommerce_api/
+ecommerce/
 │── ecommerce/          # Django project settings
 │── products/           # Product app (Model, Serializer, Views, URLs)
 │── orders/             # Order app (Model, Serializer, Views, URLs)
 │── docker-compose.yml  # Docker configuration
-│── Dockerfile          # Docker setup
+│── dockerfile          # Docker setup
 │── Makefile            # Shortcut commands
 │── requirements.txt    # Python dependencies
 │── .env                # Environment variables (ignored in Git)
@@ -115,7 +116,7 @@ ecommerce_api/
 ## 📝 6️⃣ Environment Variables (`.env`)
 Ensure you have a `.env` file with:
 ```
-SECRET_KEY=super-secret-key
+SECRET_KEY=secret-key
 DEBUG=True
 ALLOWED_HOSTS=*
 ```
